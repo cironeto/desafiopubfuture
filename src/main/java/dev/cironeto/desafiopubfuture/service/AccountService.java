@@ -11,6 +11,7 @@ import dev.cironeto.desafiopubfuture.repository.ExpenseRepository;
 import dev.cironeto.desafiopubfuture.repository.IncomeRepository;
 import dev.cironeto.desafiopubfuture.service.exception.DatabaseException;
 import dev.cironeto.desafiopubfuture.service.exception.ResourceNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -22,16 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 
 @Service
+@RequiredArgsConstructor
 public class AccountService {
-
-    @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private IncomeRepository incomeRepository;
-
-    @Autowired
-    private ExpenseRepository expenseRepository;
+    private final AccountRepository accountRepository;
+    private final IncomeRepository incomeRepository;
+    private final ExpenseRepository expenseRepository;
 
     @Transactional(readOnly = true)
     public Page<AccountDto> findAllPaged(Pageable pageable) {
