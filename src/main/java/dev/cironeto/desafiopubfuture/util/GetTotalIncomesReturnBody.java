@@ -10,9 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class TransferRequestBody {
+public class GetTotalIncomesReturnBody {
 
-    private Long sourceAccountId;
-    private Long targetAccountId;
-    private Long amount;
+    private Long totalIncomes;
+
 }

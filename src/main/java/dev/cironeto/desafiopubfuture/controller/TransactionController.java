@@ -1,7 +1,9 @@
 package dev.cironeto.desafiopubfuture.controller;
 
+import dev.cironeto.desafiopubfuture.repository.IncomeRepository;
 import dev.cironeto.desafiopubfuture.service.TransactionService;
 import dev.cironeto.desafiopubfuture.util.GetTotalBalanceReturnBody;
+import dev.cironeto.desafiopubfuture.util.GetTotalIncomesReturnBody;
 import dev.cironeto.desafiopubfuture.util.TransferRequestBody;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/transaction")
 public class TransactionController {
     private final TransactionService transactionService;
+    private final IncomeRepository incomeRepository;
 
     @GetMapping(value = "/get-total-balance")
     public ResponseEntity<GetTotalBalanceReturnBody> getTotalBalance(){
@@ -22,5 +25,10 @@ public class TransactionController {
     public ResponseEntity<Void> makeTransfer(@RequestBody TransferRequestBody requestBody) {
         transactionService.makeTransfer(requestBody);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/get-total-incomes")
+    public ResponseEntity<GetTotalIncomesReturnBody> getTotalIncomes(){
+        return ResponseEntity.ok(transactionService.getTotalIncomes());
     }
 }

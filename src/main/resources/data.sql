@@ -15,7 +15,7 @@ VALUES (100,
 INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
 VALUES (100,
         null,
-        '2022-01-13T00:00:00',
+        '2022-01-10T00:00:00Z',
         'test',
         2,
         2);

@@ -10,8 +10,8 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Query
     (
-            nativeQuery = true,
-            value = "SELECT SUM(balance) FROM tb_account;"
+        nativeQuery = true,
+        value = "SELECT SUM(balance) FROM tb_account;"
     )
     Long getTotalBalance();
 }
