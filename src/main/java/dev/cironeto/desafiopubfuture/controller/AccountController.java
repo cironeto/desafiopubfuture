@@ -2,7 +2,6 @@ package dev.cironeto.desafiopubfuture.controller;
 
 import dev.cironeto.desafiopubfuture.dto.AccountDto;
 import dev.cironeto.desafiopubfuture.service.AccountService;
-import dev.cironeto.desafiopubfuture.service.TransactionService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/accounts")
 public class AccountController {
     private final AccountService accountService;
-    private final TransactionService transactionService;
 
     @GetMapping
     public ResponseEntity<Page<AccountDto>> findAllPaged(Pageable pageable) {

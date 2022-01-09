@@ -26,9 +26,4 @@ public class Account implements Serializable {
     private AccountType accountType;
     private String financialInstitution;
 
-    @OneToMany(mappedBy = "account")
-    private List<Expense> expenses = new ArrayList<>();
-
-    @OneToMany(mappedBy = "account")
-    private List<Income> incomes = new ArrayList<>();
 }

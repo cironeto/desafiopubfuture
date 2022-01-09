@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.time.Instant;
 
 @ControllerAdvice
@@ -46,10 +47,9 @@ public class ResourceExceptionHandler {
 
         standardError.setTimestamp(Instant.now());
         standardError.setStatus(status.value());
-        standardError.setError("Can not transfer to the same account or insufficient balance");
+        standardError.setError("Illegal arguments");
         standardError.setMessage(e.getMessage());
         standardError.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(standardError);
     }
-
 }

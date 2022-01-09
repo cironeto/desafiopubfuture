@@ -19,7 +19,7 @@ public class TransactionController {
     }
 
     @PutMapping(value = "/transfer")
-    public ResponseEntity<Void> transferAmountFromAToB(@RequestBody TransferRequestBody requestBody) {
+    public ResponseEntity<Void> makeTransfer(@RequestBody TransferRequestBody requestBody) {
         transactionService.makeTransfer(requestBody);
         return ResponseEntity.noContent().build();
     }
