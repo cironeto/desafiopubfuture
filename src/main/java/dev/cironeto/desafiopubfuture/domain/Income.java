@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_income")
@@ -22,8 +22,8 @@ public class Income implements Serializable {
     @EqualsAndHashCode.Include
     private Long id;
     private Long value;
-    private Instant receivingDate;
-    private Instant expectedReceivingDate;
+    private LocalDate receivingDate;
+    private LocalDate expectedReceivingDate;
     private String description;
     private IncomeType incomeType;
 

@@ -1,6 +1,7 @@
 package dev.cironeto.desafiopubfuture.service;
 
 import dev.cironeto.desafiopubfuture.domain.Income;
+import dev.cironeto.desafiopubfuture.domain.enums.IncomeType;
 import dev.cironeto.desafiopubfuture.dto.IncomeDto;
 import dev.cironeto.desafiopubfuture.dto.IncomeInsertDto;
 import dev.cironeto.desafiopubfuture.repository.AccountRepository;
@@ -9,7 +10,6 @@ import dev.cironeto.desafiopubfuture.service.exception.DatabaseException;
 import dev.cironeto.desafiopubfuture.service.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
-import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Slf4j
 @Service
@@ -55,12 +55,10 @@ public class IncomeService {
             entity = incomeRepository.save(entity);
             incomeRepository.flush();
             return new IncomeInsertDto(entity);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             log.info("Account ID not found when trying to update the income");
             throw new DatabaseException("Account ID not found");
-        }
-        catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException e) {
             log.info("Income ID " + id + " not found when trying to update");
             throw new ResourceNotFoundException("Income ID " + id + " not found");
         }
@@ -79,6 +77,17 @@ public class IncomeService {
         }
     }
 
+    @Transactional(readOnly = true)
+    public Page<IncomeDto> filterByType(Pageable pageable, IncomeType type) {
+        Page<Income> list = incomeRepository.findByIncomeType(type, pageable);
+        return list.map(IncomeDto::new);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<IncomeDto> filterByDateBetween(LocalDate from, LocalDate to, Pageable pageable) {
+        Page<Income> list = incomeRepository.findByDateBetween(from, to, pageable);
+        return list.map(IncomeDto::new);
+    }
 
 
     private void copyDtoToEntity(IncomeInsertDto dto, Income entity) {

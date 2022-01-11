@@ -16,7 +16,7 @@ public class TransactionController {
     private final TransactionService transactionService;
     private final IncomeRepository incomeRepository;
 
-    @GetMapping(value = "/get-total-balance")
+    @GetMapping(value = "/total-balance")
     public ResponseEntity<GetTotalBalanceReturnBody> getTotalBalance(){
         return ResponseEntity.ok(transactionService.getTotalBalance());
     }
@@ -27,7 +27,7 @@ public class TransactionController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/get-total-incomes")
+    @GetMapping(value = "/total-incomes")
     public ResponseEntity<GetTotalIncomesReturnBody> getTotalIncomes(){
         return ResponseEntity.ok(transactionService.getTotalIncomes());
     }

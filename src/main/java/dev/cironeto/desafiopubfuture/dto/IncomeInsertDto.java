@@ -1,12 +1,11 @@
 package dev.cironeto.desafiopubfuture.dto;
 
-import dev.cironeto.desafiopubfuture.domain.Account;
 import dev.cironeto.desafiopubfuture.domain.Income;
 import dev.cironeto.desafiopubfuture.domain.enums.IncomeType;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,8 +18,8 @@ public class IncomeInsertDto implements Serializable {
     @EqualsAndHashCode.Include
     private Long id;
     private Long value;
-    private Instant receivingDate;
-    private Instant expectedReceivingDate;
+    private LocalDate receivingDate;
+    private LocalDate expectedReceivingDate;
     private String description;
     private IncomeType incomeType;
     private Long accountId;
