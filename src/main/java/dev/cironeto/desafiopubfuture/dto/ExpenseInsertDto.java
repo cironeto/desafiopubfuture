@@ -1,6 +1,5 @@
 package dev.cironeto.desafiopubfuture.dto;
 
-import dev.cironeto.desafiopubfuture.domain.Account;
 import dev.cironeto.desafiopubfuture.domain.Expense;
 import dev.cironeto.desafiopubfuture.domain.enums.ExpenseType;
 import lombok.*;
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ExpenseDto implements Serializable {
+public class ExpenseInsertDto implements Serializable {
 
     @EqualsAndHashCode.Include
     private Long id;
@@ -22,15 +21,14 @@ public class ExpenseDto implements Serializable {
     private LocalDate paymentDate;
     private LocalDate dueDate;
     private ExpenseType expenseType;
-    private Account account;
+    private Long accountId;
 
-    public ExpenseDto (Expense entity) {
+    public ExpenseInsertDto(Expense entity) {
         id = entity.getId();
         value = entity.getValue();
         paymentDate = entity.getPaymentDate();
         dueDate = entity.getDueDate();
         expenseType = entity.getExpenseType();
-        account = entity.getAccount();
+        accountId = entity.getAccount().getId();
     }
-
 }
