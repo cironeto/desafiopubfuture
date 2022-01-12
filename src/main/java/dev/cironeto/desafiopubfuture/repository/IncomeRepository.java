@@ -15,8 +15,8 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
 
     @Query
             (
-                nativeQuery = true,
-                value = "SELECT SUM(value) FROM tb_income;"
+                    nativeQuery = true,
+                    value = "SELECT SUM(value) FROM tb_income;"
             )
     Long getTotalIncomes();
 
@@ -24,9 +24,17 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
 
     @Query
             (
-                nativeQuery = true,
-                value = "SELECT * FROM TB_INCOME WHERE RECEIVING_DATE BETWEEN ?1 AND ?2"
+                    nativeQuery = true,
+                    value = "SELECT * FROM tb_income WHERE receiving_date BETWEEN ?1 AND ?2"
             )
-    Page<Income> findByDateBetween(LocalDate from, LocalDate to, Pageable pageable);
+    Page<Income> filterByReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
+
+
+    @Query
+            (
+                    nativeQuery = true,
+                    value = "SELECT * FROM tb_income WHERE expected_receiving_date BETWEEN ?1 AND ?2"
+            )
+    Page<Income> filterByExpectedReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
 
 }

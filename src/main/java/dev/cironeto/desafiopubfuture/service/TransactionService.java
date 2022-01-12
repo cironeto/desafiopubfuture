@@ -42,8 +42,4 @@ public class TransactionService {
         }
     }
 
-    @Transactional(readOnly = true)
-    public GetTotalIncomesReturnBody getTotalIncomes() {
-        return new GetTotalIncomesReturnBody(incomeRepository.getTotalIncomes());
-    }
 }

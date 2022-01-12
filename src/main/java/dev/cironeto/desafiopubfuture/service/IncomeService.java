@@ -8,6 +8,7 @@ import dev.cironeto.desafiopubfuture.repository.AccountRepository;
 import dev.cironeto.desafiopubfuture.repository.IncomeRepository;
 import dev.cironeto.desafiopubfuture.service.exception.DatabaseException;
 import dev.cironeto.desafiopubfuture.service.exception.ResourceNotFoundException;
+import dev.cironeto.desafiopubfuture.util.GetTotalIncomesReturnBody;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -78,14 +79,25 @@ public class IncomeService {
     }
 
     @Transactional(readOnly = true)
+    public GetTotalIncomesReturnBody getTotalIncomes() {
+        return new GetTotalIncomesReturnBody(incomeRepository.getTotalIncomes());
+    }
+
+    @Transactional(readOnly = true)
     public Page<IncomeDto> filterByType(Pageable pageable, IncomeType type) {
         Page<Income> list = incomeRepository.findByIncomeType(type, pageable);
         return list.map(IncomeDto::new);
     }
 
     @Transactional(readOnly = true)
-    public Page<IncomeDto> filterByDateBetween(LocalDate from, LocalDate to, Pageable pageable) {
-        Page<Income> list = incomeRepository.findByDateBetween(from, to, pageable);
+    public Page<IncomeDto> filterByReceivingDate(LocalDate from, LocalDate to, Pageable pageable) {
+        Page<Income> list = incomeRepository.filterByReceivingDate(from, to, pageable);
+        return list.map(IncomeDto::new);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<IncomeDto> filterByExpectedReceivingDate(LocalDate from, LocalDate to, Pageable pageable) {
+        Page<Income> list = incomeRepository.filterByExpectedReceivingDate(from, to, pageable);
         return list.map(IncomeDto::new);
     }
 

@@ -40,16 +40,127 @@ VALUES (100,
         'test',
         3,
         2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+INSERT INTO tb_income (value, receiving_date, expected_receiving_date, description, income_type, account_id)
+VALUES (100,
+        null,
+        '2022-01-10',
+        'test',
+        3,
+        2);
+
+
 
 INSERT INTO tb_expense (value, payment_date, due_date, expense_type, account_id)
 VALUES (150,
-        '2022-01-1',
+        '2022-01-15',
         '2022-01-13',
         1,
         1);
 INSERT INTO tb_expense (value, payment_date, due_date, expense_type, account_id)
 VALUES (500,
+        '2021-01-10',
+        '2021-02-17',
+        2,
+        1);
+INSERT INTO tb_expense (value, payment_date, due_date, expense_type, account_id)
+VALUES (1000,
+        '2022-01-1',
+        '2022-01-10',
+        3,
+        1);
+INSERT INTO tb_expense (value, payment_date, due_date, expense_type, account_id)
+VALUES (750,
         '2022-01-1',
         '2022-01-10',
         2,
-        1);
+        3);
+INSERT INTO tb_expense (value, payment_date, due_date, expense_type, account_id)
+VALUES (1530,
+        '2022-01-1',
+        '2022-01-10',
+        1,
+        2);
