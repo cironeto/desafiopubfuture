@@ -1,7 +1,6 @@
 package dev.cironeto.desafiopubfuture.repository;
 
 import dev.cironeto.desafiopubfuture.domain.Expense;
-import dev.cironeto.desafiopubfuture.domain.Expense;
 import dev.cironeto.desafiopubfuture.domain.enums.ExpenseType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,28 +13,16 @@ import java.time.LocalDate;
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT SUM(value) FROM tb_expense;"
-            )
-    Long getTotalExpenses();
-
     Page<Expense> findByExpenseType(ExpenseType expenseType, Pageable pageable);
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT * FROM tb_expense WHERE payment_date BETWEEN ?1 AND ?2"
-            )
+    @Query(value = "SELECT SUM(value) FROM Expense")
+    Long getTotalExpenses();
+
+    @Query("SELECT e FROM Expense e WHERE e.paymentDate BETWEEN :from AND :to")
     Page<Expense> filterByPaymentDate(LocalDate from, LocalDate to, Pageable pageable);
 
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT * FROM tb_expense WHERE due_date BETWEEN ?1 AND ?2"
-            )
+    @Query(value = "SELECT e FROM Expense e WHERE e.dueDate BETWEEN :from AND :to")
     Page<Expense> filterByDueDate(LocalDate from, LocalDate to, Pageable pageable);
-    
+
 }

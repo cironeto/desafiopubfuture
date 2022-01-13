@@ -8,10 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    @Query
-    (
-        nativeQuery = true,
-        value = "SELECT SUM(balance) FROM tb_account;"
-    )
+    @Query(value = "SELECT SUM(balance) FROM Account")
     Long getTotalBalance();
 }

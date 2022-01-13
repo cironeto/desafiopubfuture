@@ -13,28 +13,16 @@ import java.time.LocalDate;
 @Repository
 public interface IncomeRepository extends JpaRepository<Income, Long> {
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT SUM(value) FROM tb_income;"
-            )
-    Long getTotalIncomes();
-
     Page<Income> findByIncomeType(IncomeType incomeType, Pageable pageable);
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT * FROM tb_income WHERE receiving_date BETWEEN ?1 AND ?2"
-            )
+    @Query(value = "SELECT SUM(value) FROM Income")
+    Long getTotalIncomes();
+
+    @Query(value = "SELECT i FROM Income i WHERE i.receivingDate BETWEEN :from AND :to")
     Page<Income> filterByReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
 
 
-    @Query
-            (
-                    nativeQuery = true,
-                    value = "SELECT * FROM tb_income WHERE expected_receiving_date BETWEEN ?1 AND ?2"
-            )
+    @Query(value = "SELECT i FROM Income i WHERE i.expectedReceivingDate BETWEEN :from AND :to")
     Page<Income> filterByExpectedReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
 
 }

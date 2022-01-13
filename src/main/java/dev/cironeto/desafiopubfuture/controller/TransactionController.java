@@ -2,7 +2,6 @@ package dev.cironeto.desafiopubfuture.controller;
 
 import dev.cironeto.desafiopubfuture.service.TransactionService;
 import dev.cironeto.desafiopubfuture.util.GetTotalBalanceReturnBody;
-import dev.cironeto.desafiopubfuture.util.GetTotalIncomesReturnBody;
 import dev.cironeto.desafiopubfuture.util.TransferRequestBody;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

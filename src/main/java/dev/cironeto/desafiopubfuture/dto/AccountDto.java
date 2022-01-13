@@ -5,8 +5,6 @@ import dev.cironeto.desafiopubfuture.domain.enums.AccountType;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
