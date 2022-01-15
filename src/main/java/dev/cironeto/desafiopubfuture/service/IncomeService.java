@@ -56,9 +56,11 @@ public class IncomeService {
             entity = incomeRepository.save(entity);
             incomeRepository.flush();
             return new IncomeInsertDto(entity);
+
         } catch (DataIntegrityViolationException e) {
             log.info("Account ID not found when trying to update the income");
             throw new DatabaseException("Account ID not found");
+
         } catch (EntityNotFoundException e) {
             log.info("Income ID " + id + " not found when trying to update");
             throw new ResourceNotFoundException("Income ID " + id + " not found");
@@ -69,9 +71,11 @@ public class IncomeService {
     public void delete(Long id) {
         try {
             incomeRepository.deleteById(id);
+
         } catch (EmptyResultDataAccessException e) {
             log.info("ID " + id + " not found when trying to delete");
             throw new ResourceNotFoundException("ID " + id + " not found");
+
         } catch (DataIntegrityViolationException e) {
             log.info("Integrity violation. Cannot delete this income");
             throw new DatabaseException("Integrity violation. Cannot delete this income");

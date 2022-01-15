@@ -41,9 +41,11 @@ public class AccountService {
         try {
             accountRepository.deleteById(id);
             accountRepository.flush();
+
         } catch (EmptyResultDataAccessException e) {
             log.info("ID " + id + " not found when trying to delete");
             throw new ResourceNotFoundException("ID " + id + " not found");
+
         } catch (DataIntegrityViolationException e) {
             log.info("Integrity violation. Cannot delete this account");
             throw new DatabaseException("Integrity violation. Cannot delete this account because it has related incomes/expenses");
@@ -64,7 +66,7 @@ public class AccountService {
     }
 
 
-    private void copyDtoToEntity(AccountDto dto, Account entity) {
+    private static void copyDtoToEntity(AccountDto dto, Account entity) {
         entity.setBalance(dto.getBalance());
         entity.setAccountType(dto.getAccountType());
         entity.setFinancialInstitution(dto.getFinancialInstitution());

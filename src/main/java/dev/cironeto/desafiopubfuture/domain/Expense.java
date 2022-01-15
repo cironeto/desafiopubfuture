@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @ToString
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Expense implements Serializable {
 

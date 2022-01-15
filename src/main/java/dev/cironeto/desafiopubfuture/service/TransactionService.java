@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -25,28 +25,34 @@ public class TransactionService {
 
     @Transactional
     public void makeTransfer(TransferRequestBody requestBody) {
-        Account sourceAccount = accountRepository.getById(requestBody.getSourceAccountId());
-        Account targetAccount = accountRepository.getById(requestBody.getTargetAccountId());
+        Optional<Account> sourceAccountOpt = accountRepository.findById(requestBody.getSourceAccountId());
+        Optional<Account> targetAccountOpt = accountRepository.findById(requestBody.getTargetAccountId());
         Long amount = requestBody.getAmount();
+
+        Account sourceAccount = sourceAccountOpt.orElseThrow(() -> new ResourceNotFoundException("ID not found"));
+        Account targetAccount = targetAccountOpt.orElseThrow(() -> new ResourceNotFoundException("ID not found"));
 
         validateTransfer(sourceAccount, targetAccount, amount);
 
-        sourceAccount.setBalance(sourceAccount.getBalance() - amount);
-        targetAccount.setBalance(targetAccount.getBalance() + amount);
+        subtractAmountFromSourceAccountAndAddToTargetAmount
+                (sourceAccount, targetAccount, amount);
     }
 
+
+    private void subtractAmountFromSourceAccountAndAddToTargetAmount
+            (Account sourceAccount, Account targetAccount, Long amount) {
+        log.info("Making the transfer and changing the balance of involved accounts");
+        sourceAccount.setBalance(sourceAccount.getBalance() - amount);
+        targetAccount.setBalance(targetAccount.getBalance() + amount);
+
+    }
 
     private void validateTransfer(Account sourceAccount, Account targetAccount, Long amount) {
         log.info("Validating the transaction");
-        try {
-            if (sourceAccount.getBalance() <= 0 ||
-                    sourceAccount.getBalance() < amount ||
-                    sourceAccount.getId().equals(targetAccount.getId())) {
-                throw new IllegalArgumentException("Can not transfer to the same account or insufficient balance");
-            }
-        } catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException("ID not found");
+        if (sourceAccount.getBalance() <= 0 ||
+                sourceAccount.getBalance() < amount ||
+                sourceAccount.getId().equals(targetAccount.getId())) {
+            throw new IllegalArgumentException("Can not transfer to the same account or insufficient balance");
         }
     }
-
 }

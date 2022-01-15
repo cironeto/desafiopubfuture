@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class AccountDto implements Serializable {
 

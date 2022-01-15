@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @ToString
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class IncomeDto implements Serializable {
 
