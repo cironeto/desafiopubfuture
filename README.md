@@ -1,6 +1,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cironeto/desafiopubfuture/maven-ci-cd?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/cironeto/desafiopubfuture?style=flat-square)
 ![GitHub top language](https://img.shields.io/github/languages/top/cironeto/desafiopubfuture?style=flat-square)
+
 # Desafio de Programação - PubFuture
 
 ## Sobre
@@ -18,7 +19,7 @@ O sistema contém as seguintes funcionalidades:
     • CRUD de Receitas / Listar receita total / filtrar por tipo e datas
     • CRUD de Despesas / Listar despesa total / filtrar por tipo e datas
 
-## Ferramentas ultilizadas
+## Ferramentas utilizadas
 - Java 11
 - Spring Boot 2.6.2
 - Spring Data JPA
