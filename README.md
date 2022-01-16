@@ -49,7 +49,8 @@ Ao executar, a aplicação estará disponível em **http://localhost:8080**
 
 Assim que o projeto é executado, o banco de dados H2 é criado com alguns dados inseridos e pode ser acessado em **http://localhost:8080/h2-console/**:
 ```sh
-H2
+H2 LOGIN
+jdbc url: jdbc:h2:mem:testdb
 username: pub
 password: pub
 ```
