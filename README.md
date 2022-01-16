@@ -31,13 +31,13 @@ Para execução deste projeto é necessário ter instalado:
 - JDK 11
 
 ## Execução
-Execute via IDE ou abra o terminal em '.../desafiopubfuture' e execute os comandos:
+Execute via IDE ou abra o terminal em '.../desafiopubfuture' e execute o comando:
 
 
 ```sh
 ./mvnw clean install
 ```
-Para executar a aplicação:
+Em seguida,execute a aplicação:
 
 ```sh
 ./mvnw spring-boot:run
