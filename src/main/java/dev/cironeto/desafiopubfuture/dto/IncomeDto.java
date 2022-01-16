@@ -26,7 +26,7 @@ public class IncomeDto implements Serializable {
     private IncomeType incomeType;
     private Account account;
 
-    public IncomeDto (Income entity) {
+    public IncomeDto(Income entity) {
         id = entity.getId();
         value = entity.getValue();
         receivingDate = entity.getReceivingDate();

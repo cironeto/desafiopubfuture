@@ -33,6 +33,7 @@ public class AccountService {
         Account entity = new Account();
         copyDtoToEntity(dto, entity);
         entity = accountRepository.save(entity);
+
         return new AccountDto(entity);
     }
 
@@ -58,7 +59,9 @@ public class AccountService {
             Account entity = accountRepository.getById(id);
             copyDtoToEntity(dto, entity);
             entity = accountRepository.save(entity);
+
             return new AccountDto(entity);
+
         } catch (EntityNotFoundException e) {
             log.info("ID " + id + " not found when trying to update");
             throw new ResourceNotFoundException("ID " + id + " not found");
@@ -70,5 +73,5 @@ public class AccountService {
         entity.setBalance(dto.getBalance());
         entity.setAccountType(dto.getAccountType());
         entity.setFinancialInstitution(dto.getFinancialInstitution());
-        }
     }
+}

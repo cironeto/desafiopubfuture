@@ -87,17 +87,15 @@ class AccountControllerTest {
 
         Assertions.assertThat(accountSaved.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        AccountDto body = accountSaved.getBody();
-
-        Assertions.assertThat(body)
+        Assertions.assertThat(accountSaved.getBody())
                 .isNotNull()
                 .isInstanceOf(AccountDto.class)
                 .isEqualTo(AccountDtoCreator.createAccountDto());
     }
 
     @Test
-    @DisplayName("delete remove account when successful")
-    void delete_RemoveAccount_WhenSuccessful() {
+    @DisplayName("delete removes account when successful")
+    void delete_RemovesAccount_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     accountController.delete(existingId);
                 })
@@ -119,13 +117,13 @@ class AccountControllerTest {
 
     @Test
     @DisplayName("delete throws DataIntegrityViolationException when Id has dependent object")
-    void delete_ThrowsDataIntegrityViolationException_WhenIdDependsOnOtherObject() {
+    void delete_ThrowsDataIntegrityViolationException_WhenIdHasDependentObjects() {
         Assertions.assertThatThrownBy(() -> accountController.delete(dependentId))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
     @Test
-    @DisplayName("update replaces an account object with new information passed when successful")
+    @DisplayName("update replaces an account object with new information when successful")
     void update_ReplacesAccountObject_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     accountController.update(existingId, accountDto);

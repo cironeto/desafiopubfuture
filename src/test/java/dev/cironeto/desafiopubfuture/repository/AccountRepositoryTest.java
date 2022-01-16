@@ -14,7 +14,7 @@ class AccountRepositoryTest {
     private AccountRepository accountRepository;
 
     @Test
-    @DisplayName("getTotalBalance returns a Long value of the sum of all accounts' balance")
+    @DisplayName("getTotalBalance returns a Long value with the sum of all accounts' balance")
     void getTotalBalance_ReturnsLongValueWithSumOfAllAccountsBalance_WhenSuccessful() {
         Long totalBalance = accountRepository.getTotalBalance();
 

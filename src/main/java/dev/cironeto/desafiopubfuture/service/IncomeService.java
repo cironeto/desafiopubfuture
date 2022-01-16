@@ -40,6 +40,7 @@ public class IncomeService {
             Income entity = new Income();
             copyDtoToEntity(dto, entity);
             entity = incomeRepository.save(entity);
+
             return new IncomeInsertDto(entity);
 
         } catch (DataIntegrityViolationException e) {
@@ -55,6 +56,7 @@ public class IncomeService {
             copyDtoToEntity(dto, entity);
             entity = incomeRepository.save(entity);
             incomeRepository.flush();
+
             return new IncomeInsertDto(entity);
 
         } catch (DataIntegrityViolationException e) {

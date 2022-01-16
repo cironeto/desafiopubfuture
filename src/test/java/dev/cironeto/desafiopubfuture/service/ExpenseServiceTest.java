@@ -135,14 +135,14 @@ class ExpenseServiceTest {
     }
 
     @Test
-    @DisplayName("delete throws DatabaseException when Id has dependent object")
-    void delete_ThrowsDatabaseException_WhenIdNotFound() {
+    @DisplayName("delete throws DatabaseException when Id has dependent objects")
+    void delete_ThrowsDatabaseException_WhenHasDependentObjects() {
         Assertions.assertThatThrownBy(() -> expenseService.delete(dependentId))
                 .isInstanceOf(DatabaseException.class);
     }
 
     @Test
-    @DisplayName("update replaces an expense object with new information passed when successful")
+    @DisplayName("update replaces an expense object with new information when successful")
     void update_ReplacesExpenseObject_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     expenseService.update(existingId, expenseInsertDto);

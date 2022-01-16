@@ -49,7 +49,7 @@ class TransactionServiceTest {
     }
 
     @Test
-    @DisplayName("returns a Long value of the sum of all accounts' balance")
+    @DisplayName("returns value of the sum of all accounts' balance")
     void getTotalBalance_ReturnsLongValueWithSumOfAllAccountsBalance_WhenSuccessful() {
         GetTotalBalanceReturnBody totalBalanceReturnBody = transactionService.getTotalBalance();
 
@@ -66,7 +66,7 @@ class TransactionServiceTest {
     }
 
     @Test
-    @DisplayName("makeTransfer transfer balance value from source account to target account when transaction is valid")
+    @DisplayName("makeTransfer throws IllegalArgumentException when transaction is not valid")
     void makeTransfer_ThrowsIllegalArgumentException_WhenTransactionIsNotValid() {
 
         Mockito.when(accountRepositoryMock.findById(ArgumentMatchers.any(Long.class)))

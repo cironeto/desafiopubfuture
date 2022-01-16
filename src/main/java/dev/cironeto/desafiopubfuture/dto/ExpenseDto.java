@@ -25,7 +25,7 @@ public class ExpenseDto implements Serializable {
     private ExpenseType expenseType;
     private Account account;
 
-    public ExpenseDto (Expense entity) {
+    public ExpenseDto(Expense entity) {
         id = entity.getId();
         value = entity.getValue();
         paymentDate = entity.getPaymentDate();

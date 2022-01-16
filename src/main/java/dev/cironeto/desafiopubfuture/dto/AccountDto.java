@@ -21,7 +21,7 @@ public class AccountDto implements Serializable {
     private AccountType accountType;
     private String financialInstitution;
 
-    public AccountDto (Account entity) {
+    public AccountDto(Account entity) {
         id = entity.getId();
         balance = entity.getBalance();
         accountType = entity.getAccountType();

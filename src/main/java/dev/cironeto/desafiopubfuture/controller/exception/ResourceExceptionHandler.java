@@ -27,7 +27,7 @@ public class ResourceExceptionHandler {
     }
 
     @ExceptionHandler(DatabaseException.class)
-    public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request){
+    public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
 
@@ -40,7 +40,7 @@ public class ResourceExceptionHandler {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<StandardError> illegalArgs(IllegalArgumentException e, HttpServletRequest request){
+    public ResponseEntity<StandardError> illegalArgs(IllegalArgumentException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
 

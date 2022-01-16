@@ -34,13 +34,12 @@ class TransactionControllerTest {
     @Mock
     private AccountRepository accountRepositoryMock;
 
-    private Account account;
     private TransferRequestBody transferRequestBody;
 
     @BeforeEach
     void setUp() {
         transferRequestBody = TransferRequestBodyCreator.createTransferRequestBody();
-        account = AccountCreator.createAccount();
+        Account account = AccountCreator.createAccount();
 
         Account targetAccount = AccountCreator.createTargetAccountForTransfer();
 
@@ -53,7 +52,7 @@ class TransactionControllerTest {
     }
 
     @Test
-    @DisplayName("returns a Long value of the sum of all accounts' balance")
+    @DisplayName("getTotalBalance returns value with the sum of all accounts' balance")
     void getTotalBalance_ReturnsValueWithSumOfAllAccountsBalance_WhenSuccessful() {
         ResponseEntity<GetTotalBalanceReturnBody> totalBalanceReturnBody =
                 transactionController.getTotalBalance();

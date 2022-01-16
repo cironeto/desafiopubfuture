@@ -21,7 +21,6 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
     @Query(value = "SELECT i FROM Income i WHERE i.receivingDate BETWEEN :from AND :to")
     Page<Income> filterByReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
 
-
     @Query(value = "SELECT i FROM Income i WHERE i.expectedReceivingDate BETWEEN :from AND :to")
     Page<Income> filterByExpectedReceivingDate(LocalDate from, LocalDate to, Pageable pageable);
 

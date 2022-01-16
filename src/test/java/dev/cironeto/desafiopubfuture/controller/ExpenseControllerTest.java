@@ -110,9 +110,7 @@ class ExpenseControllerTest {
 
         Assertions.assertThat(expenseSaved.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        ExpenseInsertDto body = expenseSaved.getBody();
-
-        Assertions.assertThat(body)
+        Assertions.assertThat(expenseSaved.getBody())
                 .isNotNull()
                 .isEqualTo(ExpenseInsertDtoCreator.createExpenseInsertDto())
                 .isInstanceOf(ExpenseInsertDto.class);
@@ -141,14 +139,14 @@ class ExpenseControllerTest {
     }
 
     @Test
-    @DisplayName("delete throws DatabaseException when Id has dependent on other object")
-    void delete_ThrowsDatabaseException_WhenIdDependsOnOtherObject() {
+    @DisplayName("delete throws DatabaseException when Id has dependent objects")
+    void delete_ThrowsDatabaseException_WhenIdHasDependentObjects() {
         Assertions.assertThatThrownBy(() -> expenseController.delete(dependentId))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
     @Test
-    @DisplayName("update replaces an expense object with new information passed when successful")
+    @DisplayName("update replaces an expense object with new information when successful")
     void update_ReplacesExpenseObject_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     expenseController.update(existingId, expenseInsertDto);
@@ -162,12 +160,10 @@ class ExpenseControllerTest {
         ResponseEntity<GetTotalExpensesReturnBody> getTotalExpensesReturnBody =
                 expenseController.getTotalExpenses();
 
-        GetTotalExpensesReturnBody body = getTotalExpensesReturnBody.getBody();
-
         Assertions.assertThat(getTotalExpensesReturnBody.getStatusCode())
                 .isEqualTo(HttpStatus.OK);
 
-        Assertions.assertThat(body)
+        Assertions.assertThat(getTotalExpensesReturnBody.getBody())
                 .isNotNull()
                 .isInstanceOf(GetTotalExpensesReturnBody.class);
     }

@@ -91,8 +91,8 @@ class AccountServiceTest {
     }
 
     @Test
-    @DisplayName("delete remove account when successful")
-    void delete_RemoveAccount_WhenSuccessful() {
+    @DisplayName("delete removes account when successful")
+    void delete_RemovesAccount_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     accountService.delete(existingId);
                 })
@@ -107,14 +107,14 @@ class AccountServiceTest {
     }
 
     @Test
-    @DisplayName("delete throws DatabaseException when Id has dependent object")
-    void delete_ThrowsDatabaseException_WhenIdNotFound() {
+    @DisplayName("delete throws DatabaseException when Id has dependent objects")
+    void delete_ThrowsDatabaseException_WhenHasDependentObjects() {
         Assertions.assertThatThrownBy(() -> accountService.delete(dependentId))
                 .isInstanceOf(DatabaseException.class);
     }
 
     @Test
-    @DisplayName("update replaces an account object with new information passed when successful")
+    @DisplayName("update replaces an account object with new information when successful")
     void update_ReplacesAccountObject_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     accountService.update(ArgumentMatchers.anyLong(), accountDto);

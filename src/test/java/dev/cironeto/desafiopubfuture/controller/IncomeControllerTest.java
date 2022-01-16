@@ -110,9 +110,7 @@ class IncomeControllerTest {
 
         Assertions.assertThat(incomeSaved.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        IncomeInsertDto body = incomeSaved.getBody();
-
-        Assertions.assertThat(body)
+        Assertions.assertThat(incomeSaved.getBody())
                 .isNotNull()
                 .isEqualTo(IncomeInsertDtoCreator.createIncomeInsertDto())
                 .isInstanceOf(IncomeInsertDto.class);
@@ -141,14 +139,14 @@ class IncomeControllerTest {
     }
 
     @Test
-    @DisplayName("delete throws DatabaseException when Id has dependent on other object")
-    void delete_ThrowsDatabaseException_WhenIdDependsOnOtherObject() {
+    @DisplayName("delete throws DatabaseException when Id has dependent objects")
+    void delete_ThrowsDatabaseException_WhenIdHasDependentObjects() {
         Assertions.assertThatThrownBy(() -> incomeController.delete(dependentId))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
     @Test
-    @DisplayName("update replaces an income object with new information passed when successful")
+    @DisplayName("update replaces an income object with new information when successful")
     void update_ReplacesIncomeObject_WhenSuccessful() {
         Assertions.assertThatCode(() -> {
                     incomeController.update(existingId, incomeInsertDto);
@@ -162,12 +160,10 @@ class IncomeControllerTest {
         ResponseEntity<GetTotalIncomesReturnBody> getTotalIncomesReturnBody =
                 incomeController.getTotalIncomes();
 
-        GetTotalIncomesReturnBody body = getTotalIncomesReturnBody.getBody();
-
         Assertions.assertThat(getTotalIncomesReturnBody.getStatusCode())
                 .isEqualTo(HttpStatus.OK);
 
-        Assertions.assertThat(body)
+        Assertions.assertThat(getTotalIncomesReturnBody.getBody())
                 .isNotNull()
                 .isInstanceOf(GetTotalIncomesReturnBody.class);
     }

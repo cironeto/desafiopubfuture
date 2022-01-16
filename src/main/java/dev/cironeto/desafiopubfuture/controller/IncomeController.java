@@ -43,7 +43,7 @@ public class IncomeController {
     }
 
     @GetMapping(value = "/total")
-    public ResponseEntity<GetTotalIncomesReturnBody> getTotalIncomes(){
+    public ResponseEntity<GetTotalIncomesReturnBody> getTotalIncomes() {
         return ResponseEntity.ok(incomeService.getTotalIncomes());
     }
 

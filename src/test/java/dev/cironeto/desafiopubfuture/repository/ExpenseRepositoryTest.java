@@ -43,7 +43,7 @@ class ExpenseRepositoryTest {
     }
 
     @Test
-    @DisplayName("getTotalExpenses returns a Long value of the sum of all expenses")
+    @DisplayName("getTotalExpenses returns a Long value with the sum of all expenses")
     void getTotalExpenses_ReturnsLongValue_WhenSuccessful() {
         Long totalExpenses = expenseRepository.getTotalExpenses();
 

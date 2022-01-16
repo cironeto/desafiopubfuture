@@ -14,7 +14,7 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @GetMapping(value = "/total-balance")
-    public ResponseEntity<GetTotalBalanceReturnBody> getTotalBalance(){
+    public ResponseEntity<GetTotalBalanceReturnBody> getTotalBalance() {
         return ResponseEntity.ok(transactionService.getTotalBalance());
     }
 

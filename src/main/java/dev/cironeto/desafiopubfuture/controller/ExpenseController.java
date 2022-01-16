@@ -43,7 +43,7 @@ public class ExpenseController {
     }
 
     @GetMapping(value = "/total")
-    public ResponseEntity<GetTotalExpensesReturnBody> getTotalExpenses(){
+    public ResponseEntity<GetTotalExpensesReturnBody> getTotalExpenses() {
         return ResponseEntity.ok(expenseService.getTotalExpenses());
     }
 

@@ -43,7 +43,7 @@ class IncomeRepositoryTest {
     }
 
     @Test
-    @DisplayName("getTotalIncomes returns a Long value of the sum of all incomes")
+    @DisplayName("getTotalIncomes returns a Long value with the sum of all incomes")
     void getTotalIncomes_ReturnsLongValue_WhenSuccessful() {
         Long totalIncomes = incomeRepository.getTotalIncomes();
 
