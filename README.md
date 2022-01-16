@@ -1,17 +1,17 @@
 # Desafio de Programação - PubFuture
 
-## Detalhes do projeto
+## Sobre
 Esse projeto foi desenvolvido para o Desafio de Programação
 Pubfuture.
-O objetivo do projeto é implementar uma solução que 
+O objetivo é implementar uma solução que 
 auxilie no controle das finanças pessoais. 
-Para isso foi desenvolvido uma <u>API REST com Spring Boot</u>
+Para isso foi desenvolvido uma API REST com Spring Boot
 responsável por esse gerenciamento financeiro.
 
 
 O sistema contém as seguintes funcionalidades:
 
-    • CRUD de Contas / Listar saldo total / transferir entre contas
+    • CRUD de Contas / Listar saldo total / transferir saldo entre contas
     • CRUD de Receitas / Listar receita total / filtrar por datas
     • CRUD de Despesas / Listar despesa total / filtrar por datas
 
@@ -27,23 +27,19 @@ O sistema contém as seguintes funcionalidades:
 Para execução deste projeto é necessário ter instalado:
 - JDK 11
 
-## Executando o projeto
-Abra o terminal em '.../desafiopubfuture' e execute o comando:
+## Execução
+Execute via IDE ou abra o terminal em '.../desafiopubfuture' e execute os comandos:
+
 
 ```sh
-./mvnw clean
-```
-```sh
-./mvnw install
-```
-Para executar os testes unitários:
-```sh
-./mvnw test
+./mvnw clean install
 ```
 Para executar a aplicação:
+
 ```sh
 ./mvnw spring-boot:run
 ```
+
 
 Ao executar, a aplicação estará disponível em **http://localhost:8080**
 
@@ -64,7 +60,7 @@ https://www.getpostman.com/collections/acd30342d69d81a8ca07
 
 ### Requisições:
 ### - CONTAS
-###Listar todas as contas:
+### Listar todas as contas:
 
 `GET /accounts`
 
