@@ -15,8 +15,8 @@ responsável por esse gerenciamento financeiro.
 O sistema contém as seguintes funcionalidades:
 
     • CRUD de Contas / Listar saldo total / transferir saldo entre contas
-    • CRUD de Receitas / Listar receita total / filtrar por datas
-    • CRUD de Despesas / Listar despesa total / filtrar por datas
+    • CRUD de Receitas / Listar receita total / filtrar por tipo e datas
+    • CRUD de Despesas / Listar despesa total / filtrar por tipo e datas
 
 ## Ferramentas ultilizadas
 - Java 11
